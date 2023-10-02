@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EveryPay QA assignment</title>
+</head>
+<body>
+<div id="pay-form"></div>
+<script src="https://sandbox-js.everypay.gr/v3"></script>
+<script>
+everypay.payform({
+pk: 'pk_9XLtqb6Zb1rFCgatGCRTF1JnIQKzif7e',
+amount: 1000
+}, (r) => {
+if (r.token) {
+const p = document.createElement('p');
+p.innerHTML = r.token;
+document.querySelector('body').appendChild(p);
+}
+});
+</script>
+</body>
+</html>

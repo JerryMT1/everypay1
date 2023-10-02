@@ -11,7 +11,7 @@ module.exports = {
     tags: ['everypay'], '@disabled': false,
 
 
-    'Check the Successful payment initiation with 3DS': ! function (browser) {
+    'Check the Successful payment initiation with 3DS': function (browser) {
 
         const regexReqURL_all = new RegExp(`verifyCardDetails`)
 
@@ -49,10 +49,12 @@ module.exports = {
     'Check the Failed payment initiation': function (browser) {
 
         browser
+            .url('file:///C:/Users/Jerry/e2e_tests/tests/everyPaySite.html') // Please download the everyPaySite.html file from the GitHub and add your local path here in order to open the url correctly
+
             .network.mockResponse('https://sandbox-payform-api.everypay.gr/api/verifyCardDetails', {
                 status: 500,
                 headers: {
-                    'Content-Type': 'UTF-8'
+                    'Content-Type': 'application/json'
                 },
             })
 
@@ -78,7 +80,7 @@ module.exports = {
     before: function (browser) {
 
         browser
-            .url('file:///C:/Users/Jerry/e2e_tests/tests/everyPaySite.html')
+            .url('file:///C:/Users/Jerry/e2e_tests/tests/everyPaySite.html') // Please download the everyPaySite.html file from the GitHub and add your local path here in order to open the url correctly
 
     },
 
